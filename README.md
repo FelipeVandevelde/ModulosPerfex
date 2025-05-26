@@ -40,7 +40,7 @@ modules/
 
 Existe para guardar arquivos de configuração do módulo, como opções padrão, constantes ou integrações.
 
-#### 1.1 `config/config.php`
+#### 1.1 :page_facing_up:`config/config.php`
 
 - Função: Arquivo para definir configurações padrão do módulo, como chaves de configuração ou valores padrão.
 - Quando usar: Sempre que precisar de variáveis globais para o módulo.
@@ -52,11 +52,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $config['nameModule_option'] = 'value';
 ```
 
-### 2. `controllers/`
+### 2. :file_folder:`controllers/`
 
 Existe para armazena os controladores que processam as requisições HTTP e ligam modelo + visão.
 
-#### 2.1 `controllers/NameModule.php`
+#### 2.1 :page_facing_up:`controllers/NameModule.php`
 
 - Função: Controlador principal do módulo.
 - Responsabilidade:
@@ -74,11 +74,11 @@ class NameModule extends AdminController {
 }
 ```
 
-### 3. `helpers/`
+### 3. :file_folder:`helpers/`
 
 Existe para funções auxiliares reutilizáveis (não orientadas a objeto).
 
-#### 3.1 `helpers/nameModule_helper.php`
+#### 3.1 :page_facing_up:`helpers/nameModule_helper.php`
 
 - Função: Funções auxiliares para facilitar operações comuns.
 - Responsabilidade:
@@ -92,7 +92,7 @@ function nameModule_custom_function($param) {
 }
 ```
 
-### 4. `language/`
+### 4. :file_folder:`language/`
 
 - Função: Arquivos de tradução.
 - Responsabilidade:
@@ -105,7 +105,7 @@ function nameModule_custom_function($param) {
 $lang['nameModule_title'] = 'Módulo de Exemplo';
 ```
 
-### 5. `libraries/`
+### 5. :file_folder:`libraries/`
 
 - Função: Guardar classes de biblioteca específicas (ex.: APIs, processamento complexo) que não se encaixam como helpers ou modelos.
 - Responsabilidade:
@@ -113,11 +113,11 @@ $lang['nameModule_title'] = 'Módulo de Exemplo';
   - Criar componentes reutilizáveis.
 - Observação: Opcional, usado apenas quando há necessidade de classes próprias.
 
-### 6. `models/`
+### 6. :file_folder:`models/`
 
 Existe para armazena as classes que interagem com o banco de dados.
 
-#### 6.1 `models/NameModule_model.php`
+#### 6.1 :page_facing_up:`models/NameModule_model.php`
 
 - Função: Modelo de dados.
 - Responsabilidade:
@@ -134,7 +134,7 @@ class NameModule_model extends App_Model {
 }
 ```
 
-### 7. `views/`
+### 7. :file_folder:`views/`
 
 - Função: Arquivos de interface (HTML + PHP).
 - Responsabilidade:
@@ -142,11 +142,11 @@ class NameModule_model extends App_Model {
   - Utilizar dados enviados pelo controlador.
 - Exemplo: `manage.php`, `create.php`.
 
-### 8. `install.php`
+### 8. :page_facing_up:`install.php`
 
 Script de instalação do módulo. Normalmente para criar tabelas no banco, definir opções, permissões etc.
 
-### 9. `nameModule.php`
+### 9. :page_facing_up:`nameModule.php`
 
 Arquivo principal do módulo, define metadata:
 
