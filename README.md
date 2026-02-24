@@ -35,6 +35,7 @@ modules/
     ├── views/
     │   └── (suas views, ex.: manage.php, create.php)
     ├── install.php
+    ├── uninstall.php
     └── nameModule.php
 ```
 
