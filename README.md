@@ -188,3 +188,133 @@ function nameModule_init() {
 }
 ```
 Perfex usa esse arquivo para listar o módulo, ativar, desativar etc.
+
+## Funções comuns
+
+Além disso temos algumas funções comuns que normalmente são utilizadas no arquivo "*init*", essas funções são pensadas para facilitar o desenvolvimento de módulos. 
+
+### register_activation_hook
+
+Registra uma função para ser chamada **quando o módulo é ativado** no sistema. Isso é útil para preparar configurações ou criar tabelas no banco de dados, por exemplo.
+```php
+/**
+ * Registrar gancho de ativação do módulo
+ * @param  string $module   nome do sistema do módulo
+ * @param  mixed $function  função para o gancho
+ * @return mixed
+ */
+
+register_activation_hook($module, $function)
+```
+
+### register_deactivation_hook
+
+Registra uma função para ser chamada **quando o módulo é desativado**. Aqui você pode desfazer configurações ou limpar dados temporários.
+```php
+/**
+* Gancho de desativação do módulo de registro
+* @param  string $module   nome do sistema do módulo
+* @param  mixed $function  função para o gancho
+* @return mixed
+*/
+
+register_deactivation_hook($module, $function)
+```
+
+### register_uninstall_hook
+
+Registra uma função para quando o módulo é *desinstalado (apagado)* completamente. Serve para remover tudo que o módulo adicionou, como tabelas ou opções.
+```php
+/**
+* Registrar gancho de desinstalação do módulo
+* @param  string $module   nome do sistema do módulo
+* @param  mixed $function  função para o gancho
+* @return mixed
+*/
+
+register_uninstall_hook($module, $function)
+```
+
+### register_cron_task
+
+Permite registrar uma função que será executada em tarefas agendadas (*cron jobs*), **depois** das tarefas principais do sistema. Isso é útil para rotinas automáticas.
+```php
+/**
+* Registre a tarefa cron do módulo, a tarefa cron é executada após a conclusão das tarefas cron principais
+* @param mixed $function parâmetro de função/classe para o gancho
+* @return null
+*/
+
+register_cron_task($function)
+```
+
+### register_payment_gateway
+
+Usa-se essa função quando seu módulo **adiciona um novo método de pagamento** ao sistema, como um gateway personalizado.
+```php
+/**
+* Injetar gateway de pagamento personalizado na matriz de gateways de pagamento
+* @param string $idpayment ID do gateway, deve ser igual a bibliotecas/nome da classe e.q. gateways/Novo_gateway
+* @param string $module nome do módulo para carregar o gateway, se ainda não estiver carregado
+*/
+
+register_payment_gateway($id, $module)
+```
+
+### register_language_files
+
+Registra arquivos de idiomas do módulo, permitindo que você tenha textos traduzíveis (como português, inglês etc.).
+```php
+/**
+* Registre os arquivos de idioma do módulo para suportar o arquivo custom_lang.php
+* @param string $module nome do sistema do módulo
+* @param array $languages matriz de nomes de arquivos de idiomas sem o _lang.php
+* @return null
+*/
+
+register_language_files($module, $languages)
+```
+
+### module_dir_url
+
+Retorna a **URL pública** da pasta do módulo (útil para carregar scripts, imagens ou redirecionar com base no módulo).
+```php
+/**
+* URL do módulo
+* e.q. https://crm-installation.com/module_name/
+* @param string $module nome do sistema do módulo
+* @param string $segment string adicional para anexar ao URL
+* @return string
+*/
+
+module_dir_url($module, $segment = '')
+```
+
+### module_dir_path
+
+Retorna o **caminho físico do diretório** onde seu módulo está no servidor (útil para carregar arquivos ou incluir classes).
+```php
+/**
+* Caminho absoluto do diretório do módulo
+* @param string $module nome do sistema do módulo
+* @param string $concat anexar string adicional ao caminho
+* @return string
+*/
+
+module_dir_path($module, $concat = '')
+```
+
+### module_libs_path
+
+Retorna o **caminho para a pasta de bibliotecas** dentro do módulo (útil para carregar bibliotecas de código extra).
+```php
+/**
+* Caminho das bibliotecas de módulos
+* e.q. módulos/nome_do_módulo/bibliotecas
+* @param string $module nome do módulo
+* @param string $concat anexar string adicional ao caminho
+* @return string
+*/
+
+module_libs_path($module, $concat = '')
+```
